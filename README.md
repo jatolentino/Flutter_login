@@ -126,7 +126,6 @@ A new Flutter project.
     }
     ```
 
-    To run, just select the Run and Dibug icon an pic the recently json option created with the name `All Devices` <br>
     Test 4.1 Compliled @ the branch of [`ver-1.0`](https://github.com/jatolentino/Flutter_login/tree/ver1.0)
     <p align="center">
     	<img src="https://github.com/jatolentino/Flutter_login/blob/ver1.0/source/step4-test-1.png" width="450">
