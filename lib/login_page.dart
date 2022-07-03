@@ -28,6 +28,20 @@ class _LoginPageState extends State<LoginPage> {
                 fit: BoxFit.cover
               )
             ),
+          ),
+          Container(
+            child: Column(
+              children: [
+                Text(
+                  "hello",
+                  style: TextStyle(
+                    fontSize: 70,
+                    fontWeight: FontWeight.bold
+
+                  ),
+                )
+              ]
+            )
           )
         ]
       )

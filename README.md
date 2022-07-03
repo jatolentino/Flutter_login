@@ -71,3 +71,63 @@ A new Flutter project.
 
 ### 4. Edit the login_page.dart
 
+- Add image and sample test
+
+    ```dart
+    import 'package:flutter/cupertino.dart';
+    import 'package:flutter/material.dart';
+
+    class LoginPage extends StatefulWidget {
+    const LoginPage({Key? key}): super(key: key);
+
+    @override
+    _LoginPageState createState() => _LoginPageState();
+    }
+
+    class _LoginPageState extends State<LoginPage> {
+    @override
+    Widget build(BuildContext context) {
+        double w = MediaQuery.of(context).size.width; //max width in window
+        double h = MediaQuery.of(context).size.height; //max height in window
+        return Scaffold(
+        backgroundColor: Colors.white,
+        body: Column(
+            children: [
+            Container(
+                width: w,
+                height: h*0.3,
+                decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(
+                    "img/loginimg.png"
+                    ),
+                    fit: BoxFit.cover
+                )
+                ),
+            ),
+            Container(
+                child: Column(
+                children: [
+                    Text(
+                    "hello",
+                    style: TextStyle(
+                        fontSize: 70,
+                        fontWeight: FontWeight.bold
+
+                    ),
+                    )
+                ]
+                )
+            )
+            ]
+        )
+        );
+    }
+    }
+    ```
+
+    Test 4.1 Compliled @ the branch of [`ver-1.0`](https://github.com/jatolentino/Flutter_login/tree/ver1.0)
+    <p align="center">
+    	<img src="https://github.com/jatolentino/Flutter_login/blob/ver1.0/source/step4-test-1.png" width="300">
+    </p>
+    
