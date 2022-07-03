@@ -2,15 +2,72 @@
 
 A new Flutter project.
 
-## Getting Started
+### 1. Getting Started
 
-This project is a starting point for a Flutter application.
+- Create the project in the terminal (it'll also create the folder)
 
-A few resources to get you started if this is your first Flutter project:
+    ```bash
+        flutter create flutter_login
+    ```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Open VSCODE and open the folder `flutter_login` just created
+- Navigate to the Source Control icon on VSCODE and choose the option `Publish to Github`, then enter your credentials and set the name of the repo (Flutter_login).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+### 2. Modify the main.dat
+
+- Create the LoginPage class
+
+    ```dart
+    import 'package:flutter/material.dart';
+    import 'login_page.dart';
+
+    void main() => runApp(MyApp());
+
+    class MyApp extends StatelessWidget {
+        @override
+        Widget build(BuildContext context) {
+            return MaterialApp(
+                title: 'Flutter Demo',
+                theme: ThemeData(
+                    primarySwatch: Colors.blue,
+                ),
+                home: LoginPage()
+            );
+        }
+    }
+    ```
+
+### 3. Create the login_page.dart
+
+- In the lib folder create the login_page.dart
+
+    ```dart
+    import 'package:flutter/cupertino.dart';
+    import 'package:flutter/material.dart';
+
+    class LoginPage extends StatefulWidget {
+        const LoginPage({Key? key}): super(key: key);
+
+        @override
+        _LoginPageState createState() => __LoginPageState();
+    }
+
+    class _HomePageState extends State<LoginPage> {
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+
+            );
+        }
+    }
+    ```
+- Add the images folder in the root folder and edit the pubspec.yaml file
+    ```yml
+    flutter:
+        assets:
+            - img/
+    ```
+
+### 4. Edit the login_page.dart
+
