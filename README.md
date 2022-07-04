@@ -517,3 +517,181 @@ A new Flutter project.
     <p align="center">
     	<img src="https://github.com/jatolentino/Flutter_login/blob/ver1.2/source/step6-test-1.png" width="300">
     </p>
+
+### 7. Adding the welcome page
+
+- Add welcome_page.dart in the folder lib
+
+    ```dart
+    import 'package:flutter/cupertino.dart';
+    import 'package:flutter/material.dart';
+
+    class WelcomePage extends StatelessWidget {
+    const WelcomePage({Key? key}) : super(key: key);
+
+    @override
+    Widget build(BuildContext context) {
+        double w = MediaQuery.of(context).size.width;
+        double h = MediaQuery.of(context).size.height;
+        return Scaffold(
+        backgroundColor: Colors.white,
+        body: Column(
+            children: [
+            Container(
+                width: w,
+                height: h*0.3,
+                decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(
+                    "img/signup.png"
+                    ),
+                    fit: BoxFit.cover
+                )
+                ),
+                child: Column(
+                children: [
+                    SizedBox(height: h*0.16,),
+                    CircleAvatar(
+                    backgroundColor: Colors.white70,
+                    radius: 51.5,
+                    backgroundImage: AssetImage(
+                        "img/profile.png"
+                    ),
+                    )
+                ]
+                )
+            ),
+            SizedBox(height: 70,),
+            Container(
+                width: w,
+                margin: const EdgeInsets.only(left: 20),
+                child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                    Text(
+                    "Welcome",
+                    style: TextStyle(
+                        fontSize: 36,
+                        fontWeight: FontWeight.bold,
+                        color:Colors.black54
+                    ),
+                    ),
+                    Text(
+                    "a@a.com",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color:Colors.grey[500]
+                    ),
+                    ),
+                ],
+                ),
+            ),
+            SizedBox(height: 200,),
+            Container(
+                width: w*0.5,
+                height: h*0.08,
+                decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                image: DecorationImage(
+                    image: AssetImage(
+                    "img/loginbtn.png"
+                    ),
+                    fit: BoxFit.cover
+                )
+                ),
+                child: Center(
+                child: Text(
+                    "Sign out",
+                    style: TextStyle(
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                    color:Colors.white,
+                    ),
+                ),
+                ),
+            ),
+            ],
+        ),
+        );
+    }
+    }
+    ```
+- Add the get in pubspec.yaml and save to install the package while running
+    ```yaml
+    dependencies:
+    flutter:
+        sdk: flutter
+
+    get:
+    ```
+    And run `flutter pub get` in the terminal
+
+- Edit the main.dart
+
+    ```dart
+    import 'package:flutter/material.dart';
+    import 'login_page.dart';
+    import 'signup_page.dart';
+    import 'welcome_page.dart';
+    import 'package:get/get.dart';
+
+    void main() => runApp(MyApp());
+
+    class MyApp extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+        return GetMaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+            primarySwatch: Colors.blue,
+        ),
+        //home: LoginPage()
+        //home: SignUpPage()
+        home: LoginPage()
+        );
+    }
+    }
+    ```
+- Add buttons functions in login_page.dart 
+
+    ```dart
+    RichText(text: TextSpan(
+            text:"Don\'t have an account?",
+            style: TextStyle(
+              color:Colors.grey[500],
+              fontSize: 20
+            ),
+            children: [
+              TextSpan(
+              text:" Create",
+              style: TextStyle(
+                color:Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold
+              ),
+                recognizer: TapGestureRecognizer()..onTap=()=>Get.to(()=>SignUpPage())
+              )
+            ]
+          )
+    ```
+
+- Add buttons functions in signup_page.dart
+
+    ```dart
+    RichText(
+        text: TextSpan(
+            recognizer: TapGestureRecognizer()..onTap=()=>Get.back(),
+            text:"Have an account?",
+            style: TextStyle(
+                fontSize: 20,
+                color:Colors.grey[500]
+            )
+        )
+    ),
+    ```
+
+    Test 7.1 Compliled @ the branch of [`ver-1.3`](https://github.com/jatolentino/Flutter_login/tree/ver1.3)
+    <p align="center">
+    	<img src="https://github.com/jatolentino/Flutter_login/blob/ver1.3/source/step7-test-1.png" width="300">
+    </p>
