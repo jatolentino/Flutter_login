@@ -695,3 +695,124 @@ A new Flutter project.
     <p align="center">
     	<img src="https://github.com/jatolentino/Flutter_login/blob/ver1.3/source/step7-test-1.png" width="300">
     </p>
+
+### 8. Create a firebase project
+
+- Head to `https://console.firebase.google.com` and tap on `Add project`
+- Name the project: Getx-firebase
+- Disable Google Analytics for this project, then hit Continue
+- Finalize with `Create project`
+- Create an IOS app to get started
+    - Apple bundle ID: find it openning ios/Runner.xcworskpace with XCode, select the root folder for details, rename Bundle identifier as `com.getx.app.flutterLogin`, make sure iOS version is at least 10.0 in Deployment Info
+    - app nickname (optional)
+    - App Store ID (optional)
+- Terminate it with the option `Register app`
+- Download GoogleService-Info.plist and save it to ios/Runner folder of the project
+- Finish giving nex to the following three steps, until `Continue to console`
+- Add app for Android, follow the same steps with the Bundle idntifier as `com.getx.app.flutterLogin`, download the json file and save it to android/app folder, finish with the 3 Next steps until `Continue to console`
+    - Add the following lines in android/app/build.gradle, in applicationId
+    ```gradle
+    apply plugin: 'come.google.gms.google-services'
+    :
+    defaultConfig {
+        applicationId "com.getx.app.flutterLogin"
+        :
+        MultiDexEnable true
+    }
+    :
+    dependencies {
+        :
+        implementation 'com.android.support:multidex:1.0.3'
+    }
+    ```
+    - Now edit in android/build.gradle
+    ```gradle
+    dependencies {
+        classpath 'com.google.gms:google-services:4.3.3'
+        :
+    }
+    ```
+- Go to the Authentication menu in the project
+    - Select `Get started`
+    - In Sign-In method, test with Native provider: Email/Password -> Enable and Save it
+    - Check Users where the new users will show up
+- Install firebase plugins, in the VS terminal run:
+    ```bash
+    flutter pub add firebase_auth
+    flutter pub add firebase_core
+    ```
+- Install for IOS, open the terminal and run `sudo gem install cocoapods`
+
+### 9. Create the auth_controller
+
+- In the lib folder, create the auth_controller.dart file
+    ```dart
+    import 'package:get/get.dart';
+    import 'package:firebase_auth/firebase_auth.dart';
+    import 'login_page.dart';
+    import 'welcome_page.dart';
+    import 'package:flutter/cupertino.dart';
+    import 'package:flutter/material.dart';
+
+    class AuthController extends GetxController{
+    //Authcontroller.instance
+    static AuthController instance = Get.find();
+    //email, password, name...
+    late Rx<User?> _user;
+    FirebaseAuth auth = FirebaseAuth.instance;
+
+    @override
+    void onReady(){
+        super.onReady();
+        //user notification
+        _user.bindStream(auth.userChanges());
+        ever(_user, _initialScreen);
+    }
+
+    _initialScreen(User? user){
+        if(user==null){
+        print("login page");
+        Get.offAll(()=>LoginPage());
+        }else{
+        Get.offAll(()=>WelcomePage());
+
+        }
+    }
+
+    void register(String email, password){
+        try{
+        auth.createUserWithEmailAndPassword(email: email, password: password);
+        }catch(e){
+        Get.snackbar("About User", "user message",
+        backgroundColor: Colors.redAccent,
+        snackPosition: SnackPosition.BOTTOM,
+            titleText: Text(
+            "Account creation failed",
+            style: TextStyle(
+                color: Colors.white
+            ),
+            ),
+            messageText: Text(
+            e.toString(),
+                style: TextStyle(
+                color: Colors.white //29.04
+                )
+            )
+        );
+        }
+    }
+    }
+    ```
+
+- Edit the main.dart file
+
+    ```dart
+    :
+    import ...
+    
+    Future<void> main async {
+        WidgetsFlutterBinding.ensureInitialized();
+        await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+
+        }   
+    ```
