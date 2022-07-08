@@ -7,7 +7,7 @@ import 'signup_page.dart';
 import 'welcome_page.dart';
 import 'package:get/get.dart';
 
-Future<void> main async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp().then((value) => Get.put(AuthController()));
 
