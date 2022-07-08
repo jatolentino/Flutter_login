@@ -140,6 +140,7 @@ class SignUpPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 40,),
+          
           Container(
             width: w*0.5,
             height: h*0.08,
