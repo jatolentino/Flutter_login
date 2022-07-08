@@ -821,3 +821,11 @@ A new Flutter project.
     runApp(MyApp());
     }
     ```
+
+- Add the GestureDectecor on the signup_page.dart file, especifically to the action ob the button `Sign up` (wrap with a widget before: select the word `Container` and CTRL + ., choose option that wraps the widget)
+
+    ```dart
+    import 'auth_controller.dart';
+    :
+    
+

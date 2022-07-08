@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:get/get.dart';
+import 'auth_controller.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -141,25 +142,30 @@ class SignUpPage extends StatelessWidget {
           ),
           SizedBox(height: 40,),
           
-          Container(
-            width: w*0.5,
-            height: h*0.08,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              image: DecorationImage(
-                image: AssetImage(
-                  "img/loginbtn.png"
-                ),
-                fit: BoxFit.cover
-              )
-            ),
-            child: Center(
-              child: Text(
-                "Sign up",
-                style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  color:Colors.white,
+          GestureDetector(
+            onTap: (){
+              AuthController.instance
+            }
+            child: Container(
+              width: w*0.5,
+              height: h*0.08,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                image: DecorationImage(
+                  image: AssetImage(
+                    "img/loginbtn.png"
+                  ),
+                  fit: BoxFit.cover
+                )
+              ),
+              child: Center(
+                child: Text(
+                  "Sign up",
+                  style: TextStyle(
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                    color:Colors.white,
+                  ),
                 ),
               ),
             ),
