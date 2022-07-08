@@ -144,8 +144,8 @@ class SignUpPage extends StatelessWidget {
           
           GestureDetector(
             onTap: (){
-              AuthController.instance
-            }
+              AuthController.instance.register(email, password)
+            },
             child: Container(
               width: w*0.5,
               height: h*0.08,
