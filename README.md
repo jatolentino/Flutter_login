@@ -808,11 +808,11 @@ A new Flutter project.
 
     ```dart
     :
-    import ...
-    
-    Future<void> main async {
-        WidgetsFlutterBinding.ensureInitialized();
-        await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+    import 'package:get/get.dart';
 
-        }   
+    Future<void> main() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+    runApp(MyApp());
+    }
     ```
