@@ -804,10 +804,15 @@ A new Flutter project.
     }
     ```
 
-- Edit the main.dart file
+- Edit the main.dart file and add the firebaseapp
 
     ```dart
-    :
+    import 'package:flutter/material.dart';
+    import 'package:firebase_core/firebase_core.dart';
+    import 'package:firebase_auth/firebase_auth.dart';
+    import 'login_page.dart';
+    import 'signup_page.dart';
+    import 'welcome_page.dart';
     import 'package:get/get.dart';
 
     Future<void> main() async {
