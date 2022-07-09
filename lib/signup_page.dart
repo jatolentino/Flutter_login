@@ -3,11 +3,15 @@ import 'package:flutter/gestures.dart';
 import 'package:get/get.dart';
 import 'auth_controller.dart';
 
+var emailController =  TextEditingController();
+var passwordController = TextEditingController();
 class SignUpPage extends StatelessWidget {
   const SignUpPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // var emailController =  TextEditingController();
+    // var passwordController = TextEditingController();
     List images = [
       "g.png",
       "t.png",
@@ -64,6 +68,7 @@ class SignUpPage extends StatelessWidget {
                     ]
                   ),
                   child: TextField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       hintText: "Email",
                       prefixIcon: Icon(Icons.email, color:Colors.deepOrangeAccent),
@@ -101,6 +106,8 @@ class SignUpPage extends StatelessWidget {
                     ]
                   ),
                   child: TextField(
+                    controller: passwordController,
+                    obscureText: true,
                     decoration: InputDecoration(
                       hintText: "Password",
                       prefixIcon: Icon(Icons.password_outlined, color:Colors.deepOrangeAccent),
@@ -144,7 +151,7 @@ class SignUpPage extends StatelessWidget {
           
           GestureDetector(
             onTap: (){
-              AuthController.instance.register(email, password)
+              AuthController.instance.register(emailController.text.trim(), passwordController.text.trim());
             },
             child: Container(
               width: w*0.5,

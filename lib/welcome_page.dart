@@ -1,8 +1,11 @@
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'auth_controller.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+  String email;
+  //String password;
+  WelcomePage({Key? key, required this.email}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +55,15 @@ class WelcomePage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "a@a.com",
+                  email,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color:Colors.grey[500]
+                  ),
+                ),
+                Text(
+                  email,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -63,25 +74,30 @@ class WelcomePage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 200,),
-          Container(
-            width: w*0.5,
-            height: h*0.08,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              image: DecorationImage(
-                image: AssetImage(
-                  "img/loginbtn.png"
-                ),
-                fit: BoxFit.cover
-              )
-            ),
-            child: Center(
-              child: Text(
-                "Sign out",
-                style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  color:Colors.white,
+          GestureDetector(
+            onTap: (){
+              AuthController.instance.logOut();
+            },
+            child: Container(
+              width: w*0.5,
+              height: h*0.08,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                image: DecorationImage(
+                  image: AssetImage(
+                    "img/loginbtn.png"
+                  ),
+                  fit: BoxFit.cover
+                )
+              ),
+              child: Center(
+                child: Text(
+                  "Sign out",
+                  style: TextStyle(
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                    color:Colors.white,
+                  ),
                 ),
               ),
             ),

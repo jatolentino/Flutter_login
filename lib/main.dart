@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'login_page.dart';
-import 'signup_page.dart';
-import 'welcome_page.dart';
+//import 'signup_page.dart';
+//import 'welcome_page.dart';
 import 'package:get/get.dart';
+import 'auth_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,7 +13,9 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-
+// void main() {
+//   runApp(MyApp());
+// }
 
 class MyApp extends StatelessWidget {
   @override

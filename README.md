@@ -827,5 +827,11 @@ A new Flutter project.
     ```dart
     import 'auth_controller.dart';
     :
-    
+        @override
+        Widget build(BuildContext context) {
+        var emailController =  TextEditingController();
+        var passwordController = TextEditingController();
+        List images = [
+        :
+    ```
 
