@@ -20,6 +20,7 @@ class SignUpPage extends StatelessWidget {
     double w = MediaQuery.of(context).size.width; //max width in window
     double h = MediaQuery.of(context).size.height; //max height in window
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Column(
         children: [
@@ -107,7 +108,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   child: TextField(
                     controller: passwordController,
-                    obscureText: true,
+                    //obscureText: true,
                     decoration: InputDecoration(
                       hintText: "Password",
                       prefixIcon: Icon(Icons.password_outlined, color:Colors.deepOrangeAccent),

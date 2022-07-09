@@ -23,6 +23,7 @@ class _LoginPageState extends State<LoginPage> {
     double h = MediaQuery.of(context).size.height; //max height in window
     return Scaffold(
       //resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Column(
         children: [

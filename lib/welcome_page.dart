@@ -6,12 +6,14 @@ class WelcomePage extends StatelessWidget {
   String email;
   //String password;
   WelcomePage({Key? key, required this.email}) : super(key: key);
+  //WelcomePage({Key? key, required this.password}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Column(
         children: [
@@ -62,14 +64,14 @@ class WelcomePage extends StatelessWidget {
                     color:Colors.grey[500]
                   ),
                 ),
-                Text(
-                  email,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color:Colors.grey[500]
-                  ),
-                ),
+                // Text(
+                //   password,
+                //   style: TextStyle(
+                //     fontSize: 18,
+                //     fontWeight: FontWeight.bold,
+                //     color:Colors.grey[500]
+                //   ),
+                // ),
               ],
             ),
           ),
