@@ -1032,5 +1032,5 @@ flutter create --org com.anyname.yourappname yourappname
 
     Test 11.1 Compliled @ the branch of [`ver-1.4`](https://github.com/jatolentino/Flutter_login/tree/ver1.4)
     <p align="center">
-    	<img src="https://github.com/jatolentino/Flutter_login/blob/ver1.4/source/step11-test-1.png" width="300">
+    	<img src="https://github.com/jatolentino/Flutter_login/blob/ver1.4/source/step11-test-1.png" width="600">
     </p>
