@@ -7,13 +7,13 @@ This app uses firebase as a database to store users' credentials (email & passwo
 The following images show the sign up and login pages off the app. In total there are four pages, including the welcome page and the splash screen. This project was followed from this youtube channel `https://www.youtube.com/watch?v=o_ZeLqpqt90`. Thanks to `dbestech` for the initial png files!
 
 <p align="center">
-    	<img src="https://github.com/jatolentino/Flutter_login/blob/ver1.4/source/login.png" width="300">
+    	<img src="https://github.com/jatolentino/Flutter_login/blob/ver1.4/source/login.png" width="400">
 </p>
 
 <br>
 
 <p align="center">
-    <img src="https://github.com/jatolentino/Flutter_login/blob/ver1.4/source/signup.png" width="300">
+    <img src="https://github.com/jatolentino/Flutter_login/blob/ver1.4/source/signup.png" width="400">
 </p>
 
 ## How to run the project?
@@ -30,7 +30,7 @@ The following images show the sign up and login pages off the app. In total ther
 - Configure the firebase database, following the Step 8 (`Create a firebase project`).
 - Enjoy!
 
-## Follow along step by step
+## Follow along
 
 ### 1. Getting Started
 
