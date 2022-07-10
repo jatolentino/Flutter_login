@@ -1,6 +1,36 @@
-# flutter_login
+# Flutter login app
 
-A new Flutter project.
+This app uses firebase as a database to store users' credentials (email & passwords).
+
+## Result of the project
+
+The following images show the sign up and login pages off the app. In total there are four pages, including the welcome page and the splash screen. This project was followed from this youtube channel `https://www.youtube.com/watch?v=o_ZeLqpqt90`. Thanks to `dbestech` for the initial png files!
+
+<p align="center">
+    	<img src="https://github.com/jatolentino/Flutter_login/blob/ver1.4/source/login.png" width="400">
+</p>
+
+<br>
+
+<p align="center">
+    <img src="https://github.com/jatolentino/Flutter_login/blob/ver1.4/source/signup.png" width="400">
+</p>
+
+## How to run the project?
+
+- Clone the repository and navigate to the `ios` folder and run:
+    ```bash
+    flutter pub add firebase_auth
+    flutter pub add firebase_core
+    sudo gem install cocoapods
+    flutter pub get
+    pod install
+    ```
+
+- Configure the firebase database, following the Step 8 (`Create a firebase project`).
+- Enjoy!
+
+## Follow along
 
 ### 1. Getting Started
 
@@ -942,7 +972,7 @@ flutter create --org com.anyname.yourappname yourappname
 ```
 
 ### 11. Configure a splashcreen
-- Edit the splashcree.dart
+- Edit the splashcreen.dart
 
     ```dart
     import 'package:flutter/cupertino.dart';
