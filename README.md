@@ -3,6 +3,7 @@
 This app uses firebase as a database to store users' credentials (email & passwords).
 
 ## Result of the project
+This is the final result of the projected obtained @ the step 11 that belongs to the [`ver-1.4`](https://github.com/jatolentino/Flutter_login/tree/ver1.4)
 
 The following images show the sign up and login pages off the app. In total there are four pages, including the welcome page and the splash screen. This project was followed from this youtube channel `https://www.youtube.com/watch?v=o_ZeLqpqt90`. Thanks to `dbestech` for the initial png files!
 
