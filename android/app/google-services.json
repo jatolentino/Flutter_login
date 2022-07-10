@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "427786124340",
+    "project_id": "getx-firebase-57046",
+    "storage_bucket": "getx-firebase-57046.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427786124340:android:db0529db40c86ce6ad9e61",
+        "android_client_info": {
+          "package_name": "com.getx.app.flutterLogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "427786124340-4qdujtknavvq6jevudqivp3njsjrj1vj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQE7csgTRQwDiPfjR8wQPNDy7ZOXy4f9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "427786124340-4qdujtknavvq6jevudqivp3njsjrj1vj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "427786124340-kq66b8d19o6sb19moqeu5dgefef5ednl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.getx.app.flutterLogin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
