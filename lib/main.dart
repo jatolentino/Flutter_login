@@ -6,6 +6,7 @@ import 'login_page.dart';
 //import 'welcome_page.dart';
 import 'package:get/get.dart';
 import 'auth_controller.dart';
+import 'splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       //home: SignUpPage()
       home: LoginPage()
       //home: WelcomePage()
+      //home: SplashScreen()
     );
   }
 }

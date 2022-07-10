@@ -10,8 +10,6 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var emailController =  TextEditingController();
-    // var passwordController = TextEditingController();
     List images = [
       "g.png",
       "t.png",
@@ -108,7 +106,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   child: TextField(
                     controller: passwordController,
-                    //obscureText: true,
+                    obscureText: true,
                     decoration: InputDecoration(
                       hintText: "Password",
                       prefixIcon: Icon(Icons.password_outlined, color:Colors.deepOrangeAccent),

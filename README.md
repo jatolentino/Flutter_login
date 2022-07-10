@@ -711,13 +711,14 @@ A new Flutter project.
 - Finish giving nex to the following three steps, until `Continue to console`
 - Add app for Android, follow the same steps with the Bundle idntifier as `com.getx.app.flutterLogin`, download the json file and save it to android/app folder, finish with the 3 Next steps until `Continue to console`
     - Add the following lines in android/app/build.gradle, in applicationId
+
     ```gradle
     apply plugin: 'come.google.gms.google-services'
     :
     defaultConfig {
         applicationId "com.getx.app.flutterLogin"
         :
-        MultiDexEnable true
+        //MultiDexEnable true
     }
     :
     dependencies {
@@ -725,6 +726,7 @@ A new Flutter project.
         implementation 'com.android.support:multidex:1.0.3'
     }
     ```
+
     - Now edit in android/build.gradle
     ```gradle
     dependencies {
@@ -732,6 +734,7 @@ A new Flutter project.
         :
     }
     ```
+
 - Go to the Authentication menu in the project
     - Select `Get started`
     - In Sign-In method, test with Native provider: Email/Password -> Enable and Save it
@@ -751,20 +754,21 @@ A new Flutter project.
     import 'package:firebase_auth/firebase_auth.dart';
     import 'login_page.dart';
     import 'welcome_page.dart';
-    import 'package:flutter/cupertino.dart';
+    //import 'package:flutter/cupertino.dart';
     import 'package:flutter/material.dart';
 
     class AuthController extends GetxController{
     //Authcontroller.instance
-    static AuthController instance = Get.find();
+        static AuthController instance = Get.find();
     //email, password, name...
-    late Rx<User?> _user;
-    FirebaseAuth auth = FirebaseAuth.instance;
+        late Rx<User?> _user;
+        FirebaseAuth auth = FirebaseAuth.instance;
 
-    @override
+        @override
     void onReady(){
         super.onReady();
         //user notification
+        _user = Rx<User?>(auth.currentUser);
         _user.bindStream(auth.userChanges());
         ever(_user, _initialScreen);
     }
@@ -774,14 +778,37 @@ A new Flutter project.
         print("login page");
         Get.offAll(()=>LoginPage());
         }else{
-        Get.offAll(()=>WelcomePage());
-
+        Get.offAll(()=>WelcomePage(email:user.email!));
+        //Get.offAll(()=>WelcomePage(password:user.password!));
         }
     }
 
-    void register(String email, password){
+    void login(String email, password)async{
         try{
-        auth.createUserWithEmailAndPassword(email: email, password: password);
+        await auth.signInWithEmailAndPassword(email: email, password: password);
+        }catch(e){
+        Get.snackbar("About Login", "Login message",
+        backgroundColor: Colors.redAccent,
+        snackPosition: SnackPosition.BOTTOM,
+            titleText: Text(
+            "Login failed",
+            style: TextStyle(
+                color: Colors.white
+            ),
+            ),
+            messageText: Text(
+            e.toString(),
+                style: TextStyle(
+                color: Colors.white //29.04
+                )
+            )
+        );
+        }
+    }
+
+    void register(String email, password)async{
+        try{
+        await auth.createUserWithEmailAndPassword(email: email, password: password);
         }catch(e){
         Get.snackbar("About User", "user message",
         backgroundColor: Colors.redAccent,
@@ -801,6 +828,10 @@ A new Flutter project.
         );
         }
     }
+
+    void logOut()async{
+        await auth.signOut();
+    }
     }
     ```
 
@@ -811,9 +842,8 @@ A new Flutter project.
     import 'package:firebase_core/firebase_core.dart';
     import 'package:firebase_auth/firebase_auth.dart';
     import 'login_page.dart';
-    import 'signup_page.dart';
-    import 'welcome_page.dart';
     import 'package:get/get.dart';
+    import 'auth_controller.dart';
 
     Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -822,7 +852,7 @@ A new Flutter project.
     }
     ```
 
-- Add the GestureDectecor on the signup_page.dart file, especifically to the action ob the button `Sign up` (wrap with a widget before: select the word `Container` and CTRL + ., choose option that wraps the widget)
+- Add the GestureDetector on the signup_page.dart file, especifically to the action of the button `Sign up` (wrap with a widget before: select the word `Container` and CTRL + ., choose option that wraps the widget)
 
     ```dart
     import 'auth_controller.dart';
@@ -833,5 +863,174 @@ A new Flutter project.
         var passwordController = TextEditingController();
         List images = [
         :
+
+          GestureDetector(
+            onTap: (){
+              AuthController.instance.register(emailController.text.trim(), passwordController.text.trim());
+            },
+            child: Container(
+              width: w*0.5,
+              height: h*0.08,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                image: DecorationImage(
+                  image: AssetImage(
+                    "img/loginbtn.png"
+                  ),
+                  fit: BoxFit.cover
+                )
+              ),
+              child: Center(
+                child: Text(
+                  "Sign up",
+                  style: TextStyle(
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                    color:Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 10,),
+          RichText(
+            text: TextSpan(
+              recognizer: TapGestureRecognizer()..onTap=()=>Get.back(),
+              text:"Have an account?",
+              style: TextStyle(
+                fontSize: 20,
+                color:Colors.grey[500]
+
+              )
+            )
+          ),  
+    ```
+### 10. Update the package name so it matches the Bundle ID configured on Firebase `package com.getx.app.flutterLogin`
+
+Then the package name in the Flutter project must be renamed in the following files (your project's name is the app's name):
+
+- flutter_login/android/app/build.graddle
+
+  ```gradle
+  deffaultConfig{
+  applicationId "com.getx.app.flutterlogin"
+  : 
+  }
+  ```
+
+- flutter_login/android/app/src/main/kotlin/com/example/flutter_login/MainActivity.kt  OR .../MainActivity.java
+  ```kt
+  package com.getx.app.flutterLogin
+  ```
+
+- flutter_login/android/app/src/debug/AndroidManifest.xml
+  ```xml
+  <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.getx.app.flutterLogin">
+  ```
+
+- flutter_login/android/app/src/main/AndroidManifest.xml
+  ```xml
+  <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.getx.app.flutterLogin">
+  ```
+
+Finally, to avoid this changes of name, decide ahead the name of the Firebase Bundle ID, so that when the project is created, the following input is utilized
+
+```bash
+flutter create --org com.anyname.yourappname yourappname
+```
+
+### 11. Configure a splashcreen
+- Edit the splashcree.dart
+
+    ```dart
+    import 'package:flutter/cupertino.dart';
+    import 'package:flutter/material.dart';
+
+    class SplashScreen extends StatelessWidget {
+    const SplashScreen({Key? key}): super(key: key);
+
+    @override
+    Widget build(BuildContext context) {
+        return Container(
+        width: double.maxFinite,
+        height: double.maxFinite,
+        color: Colors.white,
+        child: Center(
+            child: Container(
+            width: 100,
+            height: 100,
+            child: CircularProgressIndicator(
+                backgroundColor: Colors.redAccent,
+            ),
+            ),
+        )
+        );
+    }
+    }
     ```
 
+- Configure the main.dart to begin with the splash_screen.dart
+
+    ```dart
+    class MyApp extends StatelessWidget {
+    @override
+        Widget build(BuildContext context) {
+                return GetMaterialApp(
+                    title: 'Flutter Demo',
+                    theme: ThemeData(
+                        primarySwatch: Colors.blue,
+                    ),
+                home: SplashScreen()
+                );
+        }
+    }
+    ```
+
+- Run on both Android and Iphone devices
+  Click the Run and Debug icon, then choose the option to Add Configuration, choose Flutter debugger, then a file launch.json is created, delete the launch profile and add this (take in consideration that the devices should be stay opened and add the device ID to the json file). <br>
+  Open the iphone simulator via VSCODE with `open -a simulator`. To identify each simulator, run `flutter devices`, add the IDs in the following JSON file. <br>
+  Note: If the IOS emulator doesn't start, Go to About this Mac (Apple icon) > Storage > Manage (First disk) > Developer, and delete Xcode caches and Project build, run again `open -a simulator` or download any new Iphone simulator at Xcode > Preferences > Components, then install any simulator
+
+    ```json
+    {
+        "version": "0.2.0",
+        "configurations": [
+        {
+            "name": "flutter_guide",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "Android",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5554"
+        },
+        {
+            "name": "iPhone12",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "E0E30918-9823-4DD7-823F-BE99C99B1412"
+        },
+        {
+            "name": "flutter_guide (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+        ],
+        "compounds": [
+        {
+            "name": "All Devices",
+            "configurations": ["Android","iPhone12"]
+        }
+        ]
+    }
+    ```
+
+    Test 11.1 Compliled @ the branch of [`ver-1.4`](https://github.com/jatolentino/Flutter_login/tree/ver1.4)
+    <p align="center">
+    	<img src="https://github.com/jatolentino/Flutter_login/blob/ver1.4/source/step11-test-1.png" width="300">
+    </p>
