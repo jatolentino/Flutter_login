@@ -13,6 +13,7 @@ The following images show the sign up and login pages off the app. In total ther
 
 <br>
 
+
 <p align="center">
     <img src="https://github.com/jatolentino/Flutter_login/blob/ver1.4/source/signup.png" width="400">
 </p>
