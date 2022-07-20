@@ -41,6 +41,10 @@ The following images show the sign up and login pages off the app. In total ther
     ```bash
         flutter create flutter_login
     ```
+    Or
+    ```bash
+        flutter create --org com.anyname.yourappname yourappname
+    ```
 
 - Open VSCODE and open the folder `flutter_login` just created
 - Navigate to the Source Control icon on VSCODE and choose the option `Publish to Github`, then enter your credentials and set the name of the repo (Flutter_login).
